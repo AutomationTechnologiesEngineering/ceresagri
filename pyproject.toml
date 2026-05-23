@@ -1,17 +1,4 @@
-# =============================================================================
-# CeresAgri — Configuratie proiect Python
-# =============================================================================
-# Acest fisier este "manifest"-ul proiectului. uv (managerul nostru de pachete)
-# il citeste si stie ce dependinte sa instaleze, ce versiune de Python sa
-# foloseasca, si cum sa formateze codul.
-#
-# Standard: PEP 621 (sectiunea [project]) + extensii uv si Ruff.
-#
-# Pentru a instala/sincroniza dependintele dupa orice modificare:
-#   uv sync
-# =============================================================================
-
-[project]
+﻿[project]
 name = "ceresagri"
 version = "0.1.0"
 description = "Earth observation platform for European agricultural monitoring and CAP compliance"
@@ -19,146 +6,78 @@ authors = [
     { name = "Automation Technologies Engineering S.R.L.", email = "traian.conchi@atc-e.com" }
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<3.14"
 license = { text = "Proprietary" }
 
-# -----------------------------------------------------------------------------
-# DEPENDINTE — ce avem nevoie pentru Saptamanile 1-8 ale planului TRL 3
-# -----------------------------------------------------------------------------
-# Versiunile sunt pinned cu ">=" pentru a permite update-uri minore automate
-# (patch-uri de securitate, bugfix-uri). uv.lock fixeaza versiunile exacte
-# folosite la build, deci experienta este reproductibila pe toate masinile.
-# -----------------------------------------------------------------------------
 dependencies = [
-    # --- Geospatial fundamentale ---
-    "rasterio>=1.4.0",          # citire/scriere fisiere raster (GeoTIFF, etc.)
-    "geopandas>=1.0.0",          # operatii GIS pe vectori (parcele, granite)
-    "shapely>=2.0.0",            # operatii geometrice (buffer, intersection, etc.)
-    "pyproj>=3.7.0",             # proiectii cartografice (Stereo70 RO -> WGS84)
-    "fiona>=1.10.0",             # citire/scriere format-uri vector (Shapefile, GeoJSON)
-    "xarray>=2024.10.0",         # array-uri multi-dimensionale (timp x latitudine x longitudine)
-    "rioxarray>=0.17.0",         # xarray + rasterio integrate (raster cu coordonate)
-
-    # --- Sentinel & Copernicus ---
-    "sentinelhub>=3.11.0",       # API client oficial Sentinel Hub
-    "pystac-client>=0.8.5",      # cautare catalog STAC (Copernicus Data Space)
-    "eodag>=3.0.0",              # acces unificat la multiple catalogue EO
-
-    # --- Calcul stiintific ---
-    "numpy>=2.0.0",              # array-uri numerice (baza pentru tot)
-    "pandas>=2.2.0",             # tabele de date (series temporale parcele)
-    "scipy>=1.14.0",              # metode stiintifice (filtre, interpolare, etc.)
-    "scikit-learn>=1.5.0",       # machine learning (clasificare culturi)
-
-    # --- Vizualizare ---
-    "matplotlib>=3.9.0",         # ploturi statice (rapoarte stiintifice)
-    "seaborn>=0.13.0",           # ploturi statistice eleganete pe baza matplotlib
-    "plotly>=5.24.0",            # ploturi interactive pentru notebook-uri
-    "folium>=0.17.0",            # harti interactive (Leaflet din Python)
-    "contextily>=1.6.0",         # basemap-uri pentru ploturile geopandas
-
-    # --- Date meteorologice ---
-    "cdsapi>=0.7.0",             # client API Copernicus Climate Data Store (ERA5, etc.)
-    "xclim>=0.53.0",             # indici climatici si bioclimatici (extinde xarray)
-
-    # --- Modelare agronomica ---
-    "pyeto>=0.2",                # evapotranspiratie (FAO-56 Penman-Monteith)
-    # Daca pyeto nu acopera tot, alternativa este 'pet' sau implementare proprie
-
-    # --- Notebook & raportare ---
-    "jupyterlab>=4.3.0",         # JupyterLab pentru editare in browser daca nevoie
-    "ipykernel>=6.29.0",         # kernel Jupyter (folosit si de VS Code)
-    "weasyprint>=63.0",          # generare PDF din HTML (rapoarte conformitate)
-    "jinja2>=3.1.0",             # template-uri text (folosit de WeasyPrint)
-    "reportlab>=4.2.0",          # alternativa pentru PDF (mai low-level)
-
-    # --- I/O si utilitare ---
-    "requests>=2.32.0",          # HTTP client pentru API-uri externe
-    "httpx>=0.27.0",             # HTTP async (cand vrem viteza la fetch-uri multiple)
-    "python-dotenv>=1.0.0",      # incarcare variabile .env (chei API)
-    "pyyaml>=6.0.2",             # configurare YAML
-    "tqdm>=4.66.0",              # progress bars pentru loop-uri lungi
-    "rich>=13.9.0",              # output frumos in terminal (logging, tabele, etc.)
-    "loguru>=0.7.0",             # logging mai bun decat logging-ul standard
-    "tenacity>=9.0.0",           # retry policies pentru API-uri externe
-
-    # --- Validare date ---
-    "pydantic>=2.9.0",           # validare structuri de date (modele, configuratii)
+    "rasterio>=1.4.0",
+    "geopandas>=1.0.0",
+    "shapely>=2.0.0",
+    "pyproj>=3.7.0",
+    "fiona>=1.10.0",
+    "xarray>=2024.10.0",
+    "rioxarray>=0.17.0",
+    "sentinelhub>=3.11.0",
+    "pystac-client>=0.8.5",
+    "eodag>=3.0.0",
+    "numpy>=2.0.0",
+    "pandas>=2.2.0",
+    "scipy>=1.14.0",
+    "scikit-learn>=1.5.0",
+    "matplotlib>=3.9.0",
+    "seaborn>=0.13.0",
+    "plotly>=5.24.0",
+    "folium>=0.17.0",
+    "contextily>=1.6.0",
+    "cdsapi>=0.7.0",
+    "xclim>=0.53.0",
+    "pyfao56>=1.4.0",
+    "jupyterlab>=4.3.0",
+    "ipykernel>=6.29.0",
+    "weasyprint>=63.0",
+    "jinja2>=3.1.0",
+    "reportlab>=4.2.0",
+    "requests>=2.32.0",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.2",
+    "tqdm>=4.66.0",
+    "rich>=13.9.0",
+    "loguru>=0.7.0",
+    "tenacity>=9.0.0",
+    "pydantic>=2.9.0",
 ]
 
-# -----------------------------------------------------------------------------
-# DEPENDINTE DE DEZVOLTARE — folosite doar in development, nu in productie
-# -----------------------------------------------------------------------------
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.3.0",             # framework de testare
-    "pytest-cov>=5.0.0",         # coverage la teste
-    "ruff>=0.7.0",               # linter + formatter (versiune CLI; extensia VS Code o foloseste)
-    "mypy>=1.13.0",              # type checker static
-    "ipywidgets>=8.1.0",         # widget-uri interactive in notebook-uri
-    "pre-commit>=4.0.0",         # hook-uri Git inainte de commit (formateaza automat, ruleaza linter)
+    "pytest>=8.3.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.7.0",
+    "mypy>=1.13.0",
+    "ipywidgets>=8.1.0",
+    "pre-commit>=4.0.0",
 ]
 
-# -----------------------------------------------------------------------------
-# CONFIGURARE uv — specifica
-# -----------------------------------------------------------------------------
-[tool.uv]
-# Forteaza Python 3.13 ca interpreter exact
-python-preference = "only-managed"
-
-# Daca un wheel nu este disponibil pentru 3.13 dintr-un motiv, putem
-# decomenta linia de mai jos pentru a face fallback la 3.12 fara durere:
-# python-version = "3.12"
-
-# -----------------------------------------------------------------------------
-# CONFIGURARE RUFF — linting si formatting
-# -----------------------------------------------------------------------------
-# Ruff este in acelasi timp linter (gaseste probleme) si formatter (rescrie
-# codul intr-un stil consistent). Inlocuieste black + isort + flake8 + multe
-# alte tool-uri cu un singur binary rapid scris in Rust.
-# -----------------------------------------------------------------------------
 [tool.ruff]
-line-length = 100                # se aliniaza cu rulerul din VS Code
-target-version = "py313"          # foloseste sintaxa Python 3.13 cand simplifica
-src = ["ceresagri", "tests"]      # unde e codul nostru
+line-length = 100
+target-version = "py313"
+src = ["ceresagri", "tests"]
 
 [tool.ruff.lint]
-# Selectam regulile de la "moderate" — nu prea stricte ca sa nu sufoce dezvoltarea,
-# dar suficient cat sa prinda probleme reale:
-select = [
-    "E",     # erori pycodestyle
-    "W",     # avertismente pycodestyle
-    "F",     # erori pyflakes (variabile nedefinite, importuri neutilizate)
-    "I",     # isort (sortare importuri)
-    "UP",    # pyupgrade (foloseste sintaxa Python moderna)
-    "B",     # bugbear (probleme comune potential periculoase)
-    "C4",    # comprehensions (sugereaza list/dict comprehensions cand e mai bine)
-    "SIM",   # simplificari (cod care poate fi mai simplu)
-    "RUF",   # reguli specifice Ruff
-]
-# Ignoram cateva reguli care sunt prea agresive in faza de prototip:
-ignore = [
-    "E501",  # line too long — Ruff format se ocupa de asta automat
-    "B008",  # function call in default argument — uneori e legitim (typer.Option, etc.)
-]
+select = ["E", "W", "F", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["E501", "B008"]
 
 [tool.ruff.format]
-quote-style = "double"            # foloseste " in loc de '
-indent-style = "space"            # spatii, nu tab-uri (PEP 8)
+quote-style = "double"
+indent-style = "space"
 
-# -----------------------------------------------------------------------------
-# CONFIGURARE PYTEST — testare
-# -----------------------------------------------------------------------------
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
 addopts = "-v --strict-markers"
 
-# -----------------------------------------------------------------------------
-# CONFIGURARE MYPY — type checking
-# -----------------------------------------------------------------------------
 [tool.mypy]
 python_version = "3.13"
-ignore_missing_imports = true     # multe biblioteci geospatiale nu au stub-uri de tipuri
+ignore_missing_imports = true
 warn_unused_ignores = true
 warn_redundant_casts = true
