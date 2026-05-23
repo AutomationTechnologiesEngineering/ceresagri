@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "name": "jidvei_test_parcel",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parcela test Jidvei",
+        "crop": "vita-de-vie",
+        "region": "Podgoria Jidvei, Transilvania",
+        "country": "Romania",
+        "notes": "Parcela aproximata pentru validare TRL 3, coordonate ridicate din Google Maps"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [24.104634, 46.187860],
+          [24.109033, 46.189308],
+          [24.104559, 46.194336],
+          [24.100697, 46.193386],
+          [24.104634, 46.187860]
+        ]]
+      }
+    }
+  ]
+}
