@@ -1,0 +1,145 @@
+{
+  // ===========================================================================
+  // CeresAgri — Configuratie VS Code partajata de toata echipa
+  // ===========================================================================
+  // Acest fisier este versionat in Git la calea .vscode/settings.json
+  // Toata echipa primeste aceeasi experienta de dezvoltare: aceleasi reguli
+  // de formatare, aceleasi shortcut-uri de runtime, acelasi linter.
+  // ===========================================================================
+
+  // ---------------------------------------------------------------------------
+  // PYTHON — interpreter, formatter, linting
+  // ---------------------------------------------------------------------------
+
+  // Interpreter-ul Python: uv creeaza venv-ul la calea .venv/ in radacina
+  // proiectului. Spunem VS Code sa-l foloseasca automat in loc sa intrebe.
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+
+  // La salvare, formateaza automat fisierele Python cu Ruff (rapid si modern).
+  // Inlocuieste black + isort + flake8 cu un singur tool care le face pe toate.
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",       // aplica auto-fix pentru probleme rezolvabile
+      "source.organizeImports.ruff": "explicit" // sorteaza si grupeaza importurile (PEP 8)
+    }
+  },
+
+  // Tip de checking pentru Pylance — "basic" este recomandat pentru proiecte
+  // noi: prinde greselile evidente fara sa fie enervant cu type annotations
+  // imperfecte. Trecem la "strict" mai tarziu, cand codul stabilizat justifica.
+  "python.analysis.typeCheckingMode": "basic",
+
+  // Importeaza automat module pe masura ce tipezi (foarte util pentru noi
+  // care lucram cu zeci de biblioteci geospatiale).
+  "python.analysis.autoImportCompletions": true,
+
+  // Cand rulezi un script Python, foloseste terminalul integrat (nu fereastra
+  // separata). Important: avem nevoie ca venv-ul sa fie activ in terminal.
+  "python.terminal.activateEnvInCurrentTerminal": true,
+
+  // ---------------------------------------------------------------------------
+  // JUPYTER — notebook-urile noastre de validare
+  // ---------------------------------------------------------------------------
+
+  // Salveaza output-urile in notebook (asa cum se asteapta evaluatorii POCIDIF
+  // sa vada graficele si rezultatele cand inspecteaza repository-ul).
+  "jupyter.askForKernelRestart": false,
+  "notebook.formatOnSave.enabled": true,
+
+  // Pentru notebook-uri, foloseste tot Ruff la formatare
+  "[jupyter]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+
+  // ---------------------------------------------------------------------------
+  // EDITOR — comportament general
+  // ---------------------------------------------------------------------------
+
+  // Ruler vertical la 100 caractere — convenientia echipei pentru codul nostru.
+  // 100 e un compromis intre 80 (clasic) si "fara limita" — incape pe ecranele
+  // moderne side-by-side fara sa devina ilizibil pe ecrane mici.
+  "editor.rulers": [100],
+
+  // Tab = 4 spatii (standard PEP 8 pentru Python)
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+
+  // Auto-save cand schimbi tab-ul — niciodata nu pierzi munca prin uitare.
+  "files.autoSave": "onFocusChange",
+
+  // Sterge whitespace de la sfarsitul liniilor la salvare
+  "files.trimTrailingWhitespace": true,
+
+  // Asigura newline la sfarsitul fisierului (cerinta POSIX si Git friendly)
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ---------------------------------------------------------------------------
+  // FILES — fisiere si foldere ascunse din explorer
+  // ---------------------------------------------------------------------------
+
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "**/*.pyc": true,
+    "**/.ipynb_checkpoints": true
+  },
+
+  // ---------------------------------------------------------------------------
+  // GIT — comportament confortabil pentru echipa
+  // ---------------------------------------------------------------------------
+
+  "git.autofetch": true,                    // fetch automat la fiecare 3 minute
+  "git.confirmSync": false,                  // nu intreba la fiecare push/pull
+  "git.enableSmartCommit": true,             // commit fara stage cand nu ai stage-uri
+  "git.suggestSmartCommit": false,           // dar nu sugera asta enervant
+  "scm.defaultViewMode": "tree",             // vedere arborescenta in panoul Git
+
+  // ---------------------------------------------------------------------------
+  // GITLENS — control la setarile zgomotoase ale extensiei
+  // ---------------------------------------------------------------------------
+
+  // GitLens are multe feature-uri, unele prea agresive default. Reducem:
+  "gitlens.currentLine.enabled": true,
+  "gitlens.codeLens.enabled": false,         // dezactiveaza CodeLens-ul de deasupra fiecarei functii
+  "gitlens.statusBar.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+
+  // ---------------------------------------------------------------------------
+  // BETTER COMMENTS — culori personalizate pentru tag-uri
+  // ---------------------------------------------------------------------------
+
+  "better-comments.tags": [
+    { "tag": "TODO",    "color": "#FF8C00", "bold": true },     // portocaliu — de facut
+    { "tag": "FIXME",   "color": "#FF0000", "bold": true },     // rosu — bug confirmat
+    { "tag": "NOTE",    "color": "#3498DB" },                    // albastru — atentie cititor
+    { "tag": "HACK",    "color": "#FF69B4" },                    // roz — solutie temporara
+    { "tag": "WARNING", "color": "#FFD700", "bold": true },     // galben — atentie executie
+    { "tag": "REVIEW",  "color": "#9B59B6" }                     // mov — peer review
+  ],
+
+  // ---------------------------------------------------------------------------
+  // TERMINAL — comportament confortabil
+  // ---------------------------------------------------------------------------
+
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.copyOnSelection": true,
+
+  // ---------------------------------------------------------------------------
+  // SEARCH — excluderi din cautari globale
+  // ---------------------------------------------------------------------------
+
+  "search.exclude": {
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/data/raw": true,         // datele raw Sentinel sunt mari, excluse de cautare
+    "**/data/processed": true,
+    "**/.ipynb_checkpoints": true,
+    "**/uv.lock": true
+  }
+}

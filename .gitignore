@@ -1,0 +1,103 @@
+# =============================================================================
+# CeresAgri — .gitignore
+# =============================================================================
+# Ce NU comitem in Git:
+# - secrete (.env)
+# - fisiere generate (build, cache)
+# - date mari (tile-uri Sentinel descarcate)
+# - artefacte IDE personale
+# =============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# uv — mediul virtual local. uv.lock se comite (asigura reproductibilitate).
+.venv/
+.uv-cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# Pytest si coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Ruff si mypy cache
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+
+# Secrete si configurari locale
+.env
+.env.local
+*.pem
+secrets/
+
+# Date — depinde de marime!
+# Datele mici de test (cateva MB) le comitem in data/sample/
+# Datele mari (tile-uri raw Sentinel, GB) NU le comitem niciodata
+data/raw/
+data/processed/
+data/cache/
+*.tif
+*.tiff
+*.nc
+*.grib
+*.grb
+# Exceptie: pastram fisierele de test mici
+!tests/fixtures/**/*.tif
+
+# Logs si output-uri runtime
+*.log
+logs/
+output/
+results/
+reports/output/
+
+# IDE — fiecare cu uneltele lui (settings.json e diferit, vezi mai jos)
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# VS Code — ATENTIE:
+# Comitem .vscode/settings.json si .vscode/extensions.json (config de echipa)
+# NU comitem .vscode/launch.json (debugger personal)
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/*.code-snippets
+
+# Notebook outputs — uneori vrem sa le pastram (pentru POCIDIF demo),
+# alteori nu (sunt zgomotoase in diff-urile Git).
+# Decizia echipei: PASTRAM output-urile in notebook-urile de validare
+# (sunt parte din dovada stiintifica) si le STERGEM in notebook-urile
+# de exploration. Folositi pre-commit hook pentru a sterge selectiv.
+
+# Sisteme de operare
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,21 @@
+{
+  // ===========================================================================
+  // CeresAgri — Extensii VS Code recomandate
+  // ===========================================================================
+  // Acest fisier este versionat in Git la calea .vscode/extensions.json
+  // Cand un coleg nou deschide proiectul in VS Code, primeste automat o
+  // notificare cu extensiile recomandate de echipa pentru acest proiect.
+  // ===========================================================================
+  "recommendations": [
+    "ms-python.python",                       // Python language support
+    "ms-python.vscode-pylance",               // type checking + IntelliSense avansat
+    "ms-toolsai.jupyter",                     // notebook-uri Jupyter
+    "charliermarsh.ruff",                     // linter + formatter modern
+    "eamodio.gitlens",                        // Git superputeri
+    "aaron-bond.better-comments",             // comentarii colorate
+    "mechatroner.rainbow-csv",                // vizualizare CSV
+    "redhat.vscode-yaml",                     // suport YAML
+    "tamasfe.even-better-toml",               // suport pyproject.toml
+    "donjayamanne.python-environment-manager" // UI pentru venv-uri
+  ]
+}
