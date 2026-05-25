@@ -101,3 +101,11 @@ Thumbs.db
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Date intermediare ECMWF (CSV-urile finale se versioneaza, sursele nu)
+data/ecmwf/*.zip
+data/ecmwf/*.nc
+
+# Imagini intermediare
+data/images/
+data/ndvi/*_visualized.png
