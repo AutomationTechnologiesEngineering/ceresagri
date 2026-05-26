@@ -134,14 +134,14 @@ uv sync
 
 # Copernicus Data Space Ecosystem - Sentinel Hub credentials
 
-SH_CLIENT_ID=sh-7d4c1e41-8240-492e-aa9e-e93c0e045b5c
-SH_CLIENT_SECRET=HJhyJAps5o6ooaKNcvByvTwCCQHLSotD
+SH_CLIENT_ID=sh
+SH_CLIENT_SECRET=
 
 # Copernicus Climate Data Store (pentru ECMWF data) - vom completa in Saptamana 4
 
 CDS_API_KEY=
 CDS_URL=https://cds.climate.copernicus.eu/api
-CDS_KEY=2e10adb2-21cc-4b7e-a021-7bcb3449c1bb
+CDS_KEY=
 
 ### Rulare pipeline complet
 
