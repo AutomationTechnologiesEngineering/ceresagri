@@ -1432,15 +1432,14 @@ Conținut necesar pentru fișierul `.env`:
 
 # Copernicus Data Space Ecosystem - Sentinel Hub credentials
 # Get yours at: https://shapps.dataspace.copernicus.eu/dashboard/
-SH_CLIENT_ID=sh-7d4c1e41-8240-492e-aa9e-e93c0e045b5c
-SH_CLIENT_SECRET=HJhyJAps5o6ooaKNcvByvTwCCQHLSotD
+SH_CLIENT_ID=REDACTED_SH_CLIENT_ID
+SH_CLIENT_SECRET=REDACTED_SH_CLIENT_SECRET
 
 # Copernicus Climate Data Store (pentru ECMWF data)
 # Get yours at: https://cds.climate.copernicus.eu/
 CDS_API_KEY=
 CDS_URL=https://cds.climate.copernicus.eu/api
-CDS_KEY=2e10adb2-21cc-4b7e-a021-7bcb3449c1bb
-
+CDS_KEY=REDACTED_CDS_KEY
 
 **B.2 Verificare configurare (10 secunde)**
 
